@@ -29,7 +29,7 @@ def lineBot():
         
         if type == "text":
             msg = json_data["events"][0]["message"]["text"]
-            if msg == "雷達回撥圖" or msg == "雷達回波" :
+            if msg == "雷達迴波圖" or msg == "雷達迴波" :
                 
                 lineBotApi.push_message(userId , TextSendMessage(text = "馬上找給你!稍等"))
                 imgUrl = f"https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-002.png?{time.time_ns()}"
