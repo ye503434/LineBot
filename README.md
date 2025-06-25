@@ -1,0 +1,1 @@
+## 項目概述，Python初期Project，練習codding能力
