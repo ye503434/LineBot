@@ -7,15 +7,29 @@ from linebot import LineBotApi , WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent , TextMessage , TextSendMessage , StickerSendMessage , ImageSendMessage , LocationSendMessage
 
-access_token = "KSt0aeep3aTpoKS09/24tGmBk6foB/48lqzhyqHskcfZvH92nUY77ubZglFTr+sET2EwzpXleXRyZUEYJq8Pb2yFOZSVUmHlCxGaUB8HqtHLyB6wEsas2VpNuhbPnIHRmDKttkisjYNE9C8EcEJWlQdB04t89/1O/w1cDnyilFU="
-channel_secret = "9f87acee45e386ede9c8ed3aca65cc95"
-lineBotApi = LineBotApi(access_token) # 確認 token
-handler = WebhookHandler(channel_secret) #確認 secret 
 
 app = Flask(__name__)
-
+def weather(address):
+    result = {}
+    code = 'CWA-9F11B97E-26B6-4BC7-BF69-EBE271BBBEA9' #氣象的Token
+    url = [f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization={code}',
+           f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization={code}']//天氣和氣象觀測API網址
+    for item in url :
+        req = request.get(item)
+        data = req.json() ## .load 讀取json檔 .loads解析JSON字串 .json處理API回傳
+        station = data['records']['Station']
+        
+    
+    
+    
 @app.route("/", methods = ["POST"])
 def lineBot():
+    
+    access_token = "KSt0aeep3aTpoKS09/24tGmBk6foB/48lqzhyqHskcfZvH92nUY77ubZglFTr+sET2EwzpXleXRyZUEYJq8Pb2yFOZSVUmHlCxGaUB8HqtHLyB6wEsas2VpNuhbPnIHRmDKttkisjYNE9C8EcEJWlQdB04t89/1O/w1cDnyilFU="
+    channel_secret = "9f87acee45e386ede9c8ed3aca65cc95"
+    lineBotApi = LineBotApi(access_token) # 確認 token
+    handler = WebhookHandler(channel_secret) #確認 secret 
+
     body = request.get_data(as_text=True)
     try :
         json_data = json.loads(body) # json編譯
