@@ -13,7 +13,7 @@ def weather(address):
     result = {}
     code = 'CWA-9F11B97E-26B6-4BC7-BF69-EBE271BBBEA9' #氣象的Token
     url = [f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization={code}',
-           f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization={code}']//天氣和氣象觀測API網址
+           f'https://opendata.cwa.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization={code}']#天氣和氣象觀測API網址
     for item in url :
         req = request.get(item)
         data = req.json() ## .load 讀取json檔 .loads解析JSON字串 .json處理API回傳
